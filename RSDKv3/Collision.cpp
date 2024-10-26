@@ -3024,10 +3024,10 @@ void EnemyCollision(int left, int top, int right, int bottom)
 {
     TouchCollision(left, top, right, bottom);
 
-#if RSDK_AUTOBUILD
-    // Skip the hammer hitboxes on autobuilds, just in case
-    return;
-#endif
+    if (!Engine.plusEnabled) {
+        // Skip the hammer hitboxes on autobuilds, just in case
+        return;
+    }
 
     Player *player = &playerList[activePlayer];
 

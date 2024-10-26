@@ -141,17 +141,17 @@ void ProcessStage(void)
             vertexCount = 0;
             faceCount   = 0;
 
-#if RSDK_AUTOBUILD
-            // Prevent playing as Knuckles or Amy if on autobuilds
-            if (GetGlobalVariableByName("PLAYER_KNUCKLES") && playerListPos == GetGlobalVariableByName("PLAYER_KNUCKLES"))
-                playerListPos = 0;
-            else if (GetGlobalVariableByName("PLAYER_KNUCKLES_TAILS") && playerListPos == GetGlobalVariableByName("PLAYER_KNUCKLES_TAILS"))
-                playerListPos = 0;
-            else if (GetGlobalVariableByName("PLAYER_AMY") && playerListPos == GetGlobalVariableByName("PLAYER_AMY"))
-                playerListPos = 0;
-            else if (GetGlobalVariableByName("PLAYER_AMY_TAILS") && playerListPos == GetGlobalVariableByName("PLAYER_AMY_TAILS"))
-                playerListPos = 0;
-#endif
+            if (!Engine.plusEnabled) {
+                // Prevent playing as Knuckles or Amy if on autobuilds
+                if (GetGlobalVariableByName("PLAYER_KNUCKLES") && playerListPos == GetGlobalVariableByName("PLAYER_KNUCKLES"))
+                    playerListPos = 0;
+                else if (GetGlobalVariableByName("PLAYER_KNUCKLES_TAILS") && playerListPos == GetGlobalVariableByName("PLAYER_KNUCKLES_TAILS"))
+                    playerListPos = 0;
+                else if (GetGlobalVariableByName("PLAYER_AMY") && playerListPos == GetGlobalVariableByName("PLAYER_AMY"))
+                    playerListPos = 0;
+                else if (GetGlobalVariableByName("PLAYER_AMY_TAILS") && playerListPos == GetGlobalVariableByName("PLAYER_AMY_TAILS"))
+                    playerListPos = 0;
+            }
 
             for (int i = 0; i < PLAYER_COUNT; ++i) {
                 playerList[i].XPos               = 0;
