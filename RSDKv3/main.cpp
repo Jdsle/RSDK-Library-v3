@@ -5,8 +5,7 @@ static bool looped = false;
 
 void LoopRSDK() { Engine.Run(); }
 extern "C" {
-EMSCRIPTEN_KEEPALIVE void RSDK_Initialize()
-{
+EMSCRIPTEN_KEEPALIVE void RSDK_Initialize() {
     Engine.Init();
 
     if (!looped) {
@@ -14,22 +13,10 @@ EMSCRIPTEN_KEEPALIVE void RSDK_Initialize()
         emscripten_set_main_loop(LoopRSDK, false, true);
     }
 }
-// TODO: Enum
-EMSCRIPTEN_KEEPALIVE void RSDK_Configure(int value, int index)
-{
-    /*
-    switch (index) {
-        case 0: // Device profle
-            Engine.gameDeviceType = value;
-        break;
 
-        case 2: // Plus DLC
-#if RETRO_REV03
-            Engine.rl_enablePlus = value; 
-#endif
-        break;     
-        }
-        */
+EMSCRIPTEN_KEEPALIVE void RSDK_Configure(int value, int index) {
+    // just one setting, nothing extra for v3
+    Engine.plusEnabled = value;
 }
 }
 

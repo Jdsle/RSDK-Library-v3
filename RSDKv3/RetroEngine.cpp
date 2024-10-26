@@ -1122,7 +1122,12 @@ bool RetroEngine::LoadGameConfig(const char *filePath)
         LoadXMLStages(NULL, 0);
 
         SetGlobalVariableByName("Engine.Standalone", 1);
+#ifdef __EMSCRIPTEN__
+        // disabled by default, can be enabled via settings
+        SetGlobalVariableByName("game.hasPlusDLC", Engine.plusEnabled ? 1 : 0);
+#else
         SetGlobalVariableByName("game.hasPlusDLC", !RSDK_AUTOBUILD);
+#endif
 #endif
 
 #if !RETRO_USE_ORIGINAL_CODE

@@ -475,6 +475,10 @@ public:
     bool useHQModes         = true;
 #endif
 
+#ifdef __EMSCRIPTEN__
+    int plusEnabled = 0;
+#endif
+
     void Init();
     void Run();
 
