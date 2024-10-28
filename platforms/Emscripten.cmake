@@ -30,6 +30,7 @@ set(emsc_link_options
     -sUSE_SDL_IMAGE=1
     -sUSE_OGG=1
     -sUSE_VORBIS=1
+    -sEMULATE_FUNCTION_POINTER_CASTS
     -sFORCE_FILESYSTEM=1
     -sELIMINATE_DUPLICATE_FUNCTIONS=1
     -sEXPORTED_FUNCTIONS=['_main','_RSDK_Initialize','_RSDK_Configure']
