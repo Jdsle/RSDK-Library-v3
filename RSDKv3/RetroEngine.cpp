@@ -430,7 +430,11 @@ void RetroEngine::Run()
                             ResetCurrentStageFolder();
                             break;
 
-                        case ENGINE_EXITGAME: running = false; break;
+                        case ENGINE_EXITGAME: 
+#ifndef __EMSCRIPTEN__
+                            running = false;
+#endif
+                        break;
 
                         case ENGINE_SCRIPTERROR:
                             LoadGameConfig("Data/Game/GameConfig.bin");
