@@ -275,6 +275,11 @@ bool WriteSaveRAMData()
 
     fWrite(saveRAM, 4, SAVEDATA_SIZE, saveFile);
     fClose(saveFile);
+
+#ifdef __EMSCRIPTEN__
+    EM_ASM_({ FS.syncfs(false, function (err) { if (err) console.error(err); }); });
+#endif
+
     return true;
 }
 
@@ -983,6 +988,10 @@ void WriteUserdata()
     if (Engine.onlineActive) {
         // Load from online
     }
+
+#ifdef __EMSCRIPTEN__
+    EM_ASM_({ FS.syncfs(false, function (err) { if (err) console.error(err); }); });
+#endif
 }
 
 void AwardAchievement(int id, int status)

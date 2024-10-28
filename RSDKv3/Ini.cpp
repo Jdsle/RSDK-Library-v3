@@ -360,5 +360,9 @@ void IniParser::Write(const char *filename, bool addPath)
     }
 
     fClose(f);
+
+#ifdef __EMSCRIPTEN__
+    EM_ASM_({ FS.syncfs(false, function (err) { if (err) console.error(err); }); });
+#endif
 }
 #endif

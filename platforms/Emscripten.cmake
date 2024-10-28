@@ -18,7 +18,6 @@ set(EMSCRIPTEN_FLAGS
     -sUSE_SDL_IMAGE=1
     -sUSE_OGG=1
     -sUSE_VORBIS=1
-    -DRSDK_REVISION=3
     -DRETRO_USING_OPENGL=0
     -DRETRO_USING_SDL2=1
     -O3
@@ -35,7 +34,6 @@ set(emsc_link_options
     -sELIMINATE_DUPLICATE_FUNCTIONS=1
     -sEXPORTED_FUNCTIONS=['_main','_RSDK_Initialize','_RSDK_Configure']
     -lm
-    -DRSDK_REVISION=3
     -lidbfs.js
     -flto
 )
