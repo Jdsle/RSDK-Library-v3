@@ -66,6 +66,9 @@ After downloading libtheora, unzip it in `dependencies/all` as 'libtheora'.
 
 ## Compiling
 
+> [!NOTE]  
+> This fork does *not* run standalone! If you plan on making changes or edits, you will need to also build the [RSDK-Library Engine Manager](https://github.com/Jdsle/RSDK), or build your own interface.
+
 Compiling is as simple as typing the following in the root repository directory:
 ```
 emcmake cmake -B build
@@ -74,12 +77,8 @@ cmake --build build
 
 The resulting build will be located somewhere in `build/` depending on your system.
 
-If you plan on making edits or changes, you may want to take a look at the [RSDK-Library Engine Manager.](https://github.com/Jdsle/RSDK)
-
-If not - no need to build it yourself, the engine is hosted here at https://jdsle.github.io/RSDK/
-
 The following cmake arguments are available when compiling:
-- Use these by adding `-D[flag-name]=[value]` to the end of the `cmake -B build` command. For example, to build with `RETRO_DISABLE_PLUS` set to on, add `-DRETRO_DISABLE_PLUS=on` to the command.
+- Use these by adding `-D[flag-name]=[value]` to the end of the `emcmake cmake -B build` command. For example, to build with `RETRO_DISABLE_PLUS` set to on, add `-DRETRO_DISABLE_PLUS=on` to the command.
 
 ### RSDKv3 flags
 - `RETRO_DISABLE_PLUS`: Whether or not to disable the Plus DLC. Takes a boolean (on/off): build with `on` when compiling for distribution. Defaults to `off`.
