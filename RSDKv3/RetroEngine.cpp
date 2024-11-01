@@ -430,11 +430,7 @@ void RetroEngine::Run()
                             ResetCurrentStageFolder();
                             break;
 
-                        case ENGINE_EXITGAME: 
-#ifndef __EMSCRIPTEN__
-                            running = false;
-#endif
-                        break;
+                        case ENGINE_EXITGAME:  running = false; break;
 
                         case ENGINE_SCRIPTERROR:
                             LoadGameConfig("Data/Game/GameConfig.bin");
@@ -489,18 +485,20 @@ void RetroEngine::Run()
 #ifdef __EMSCRIPTEN__
     else {
 #endif
-    ReleaseAudioDevice();
-    StopVideoPlayback();
-    ReleaseRenderDevice();
-    WriteSettings();
+        ReleaseAudioDevice();
+        StopVideoPlayback();
+        ReleaseRenderDevice();
+        WriteSettings();
 #if RETRO_USE_MOD_LOADER
-    SaveMods();
+        SaveMods();
 #endif
 
 #if RETRO_USING_SDL1 || RETRO_USING_SDL2
-    SDL_Quit();
+        SDL_Quit();
 #endif
 #ifdef __EMSCRIPTEN__
+        emscripten_cancel_main_loop();
+        EM_ASM_({ window.location.href = window.location.href.substring(0, window.location.href.lastIndexOf('/')); }); 
     }
 #endif
 }

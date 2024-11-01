@@ -53,9 +53,7 @@ void InitDevMenu()
     AddTextMenuEntry(&gameMenu[0], "MODS");
     AddTextMenuEntry(&gameMenu[0], " ");
 #endif
-#ifndef __EMSCRIPTEN__
     AddTextMenuEntry(&gameMenu[0], "EXIT GAME");
-#endif
     gameMenu[0].alignment        = 2;
     gameMenu[0].selectionCount   = 2;
     gameMenu[0].selection1       = 0;
@@ -170,10 +168,8 @@ void ProcessStageSelect()
                 gameMenu[0].selection2 -= 2;
 
             int count = 13;
-#ifndef __EMSCRIPTEN__
 #if RETRO_USE_MOD_LOADER
             count += 2;
-#endif
 #endif
 
             if (gameMenu[0].selection2 > count)
@@ -312,9 +308,7 @@ void ProcessStageSelect()
                 AddTextMenuEntry(&gameMenu[0], "MODS");
                 AddTextMenuEntry(&gameMenu[0], " ");
 #endif
-#ifndef __EMSCRIPTEN__
                 AddTextMenuEntry(&gameMenu[0], "EXIT GAME");
-#endif
                 gameMenu[0].alignment        = 2;
                 gameMenu[0].selectionCount   = 2;
                 gameMenu[0].selection1       = 0;
@@ -499,9 +493,7 @@ void ProcessStageSelect()
                 AddTextMenuEntry(&gameMenu[0], "MODS");
                 AddTextMenuEntry(&gameMenu[0], " ");
 #endif
-#ifndef __EMSCRIPTEN__
                 AddTextMenuEntry(&gameMenu[0], "EXIT GAME");
-#endif
                 gameMenu[0].alignment        = 2;
                 gameMenu[0].selectionCount   = 2;
                 gameMenu[0].selection1       = 0;
@@ -658,9 +650,7 @@ void ProcessStageSelect()
                 AddTextMenuEntry(&gameMenu[0], " ");
                 AddTextMenuEntry(&gameMenu[0], "MODS");
                 AddTextMenuEntry(&gameMenu[0], " ");
-#ifndef __EMSCRIPTEN__
                 AddTextMenuEntry(&gameMenu[0], "EXIT GAME");
-#endif
                 gameMenu[0].alignment        = 2;
                 gameMenu[0].selectionCount   = 2;
                 gameMenu[0].selection1       = 0;
